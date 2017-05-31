@@ -29,11 +29,13 @@ public class SentenceSpout extends BaseRichSpout {
 
     @Override
     public void open(Map map, TopologyContext topologyContext, SpoutOutputCollector spoutOutputCollector) {
-        this.collector = collector;
+        System.err.println("初始化Spout");
+        this.collector = spoutOutputCollector;
     }
 
     @Override
     public void nextTuple() {
+        System.out.println("send " + sentences[index]);
         this.collector.emit(new Values(sentences[index]));
         index++;
         if(index>=sentences.length){

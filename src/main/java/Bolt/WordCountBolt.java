@@ -23,7 +23,7 @@ public class WordCountBolt extends BaseRichBolt {
     private HashMap<String,Long> counts = null;
     @Override
     public void prepare(Map map, TopologyContext topologyContext, OutputCollector outputCollector) {
-        this.collector = collector;
+        this.collector = outputCollector;
         this.counts = new HashMap<String,Long>();
     }
 
